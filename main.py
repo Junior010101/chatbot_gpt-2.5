@@ -10,7 +10,7 @@ import os
 conexao = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='12345678',
+    password='',
     database='chatbot_gpt'
 )
 cursor = conexao.cursor()
@@ -83,11 +83,21 @@ def perguntar_ia(pergunta: str) -> str:
     except Exception as e:
         return f"❌ Erro ao obter modelos: {e}"
 
+    cursor.execute("SELECT pergunta, resposta FROM interacoes ORDER BY id DESC LIMIT 3")
+    historico = cursor.fetchall()
+    
+    messages = [{"role": "system", "content": "Você é uma IA útil que responde sempre em Português do Brasil, de forma direta e clara. Responda apenas à pergunta do usuário, sem rodeios."}]
+    
+    for perg, resp in reversed(historico):
+        messages.append({"role": "user", "content": perg})
+        messages.append({"role": "assistant", "content": resp})
+    
+    messages.append({"role": "user", "content": pergunta})
+
     try:
-        # Usa chat completions (mais adequado para chat)
         response = client.chat.completions.create(
             model=modelo,
-            messages=[{"role": "user", "content": pergunta}],
+            messages=messages,
             max_tokens=100,
             temperature=0.7
         )
