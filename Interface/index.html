@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PANDY – Panda Emocional Animado</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <!-- path atualizado -->
+  </head>
+  <body>
+    <div class="pandy-body-container">
+      <div class="pandy-head" id="pandyHead">
+        <div class="pandy-ear left"></div>
+        <div class="pandy-ear right"></div>
+        <div class="pandy-eye left"><div class="pandy-eye-inner"></div></div>
+        <div class="pandy-eye right"><div class="pandy-eye-inner"></div></div>
+        <div class="pandy-mouth" id="pandyMouth"></div>
+      </div>
+      <div class="pandy-body" id="pandyBody"></div>
+      <div class="pandy-arm-left" id="armLeft"></div>
+      <div class="pandy-arm-right" id="armRight"></div>
+      <div class="pandy-leg-left" id="legLeft"></div>
+      <div class="pandy-leg-right" id="legRight"></div>
+    </div>
+
+    <div class="chat-container">
+      <div id="messages"></div>
+      <div class="composer">
+        <input id="input" type="text" placeholder="Digite algo..." />
+        <button id="send">Enviar</button>
+      </div>
+    </div>
+
+    <script defer src="/static/index.js"></script>
+    <!-- path atualizado -->
+  </body>
+</html>

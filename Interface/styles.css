@@ -1,0 +1,291 @@
+:root {
+  --bg-dark: #0f1220;
+  --bg-chat: #171a2a;
+  --color-text: #e7e9f5;
+  --accent: #7c5cff;
+  --pandy-white: #fff;
+  --pandy-black: #000;
+  --transition-speed: 0.5s;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg-dark);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  max-width: 1100px;
+  gap: 20px;
+}
+
+.chat-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#messages {
+  max-height: 250px;
+  overflow-y: auto;
+  background: var(--bg-chat);
+  padding: 10px;
+  border-radius: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+/* Scrollbar para Chrome, Edge e Safari */
+#messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+#messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+
+.bubble {
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.me {
+  background: #1d2244;
+  align-self: flex-end;
+}
+
+.pandy {
+  background: #12162b;
+  align-self: flex-start;
+}
+
+.composer {
+  display: flex;
+  gap: 10px;
+}
+
+.composer input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background: var(--bg-chat);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.composer input:focus {
+  outline: none;
+  border: 2px solid var(--accent);
+  background: #1f223b;
+}
+
+.composer button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.composer button:hover,
+.composer button:focus {
+  background-color: #6748f2;
+  outline: none;
+}
+
+/* —— PANDY corpo —— */
+.pandy-body-container {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  height: 250px;
+  margin: 20px auto;
+}
+
+.pandy-head {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--pandy-white);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 30px rgba(124, 92, 255, 0.5);
+  transition: all var(--transition-speed) ease;
+}
+
+.pandy-ear {
+  width: 30px;
+  height: 30px;
+  background: var(--pandy-black);
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  transition: all var(--transition-speed) ease;
+}
+
+.pandy-ear.left {
+  left: -10px;
+}
+
+.pandy-ear.right {
+  right: -10px;
+}
+
+.pandy-eye {
+  width: 18px;
+  height: 24px;
+  background: var(--pandy-black);
+  border-radius: 50%;
+  position: absolute;
+  top: 25px;
+  transition: all var(--transition-speed) ease;
+}
+
+.pandy-eye.left {
+  left: 20px;
+}
+
+.pandy-eye.right {
+  right: 20px;
+}
+
+.pandy-eye-inner {
+  width: 8px;
+  height: 8px;
+  background: var(--pandy-white);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  transition: all var(--transition-speed) ease;
+}
+
+.pandy-mouth {
+  width: 40px;
+  height: 20px;
+  border-bottom: 4px solid var(--pandy-black);
+  border-radius: 0 0 20px 20px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all var(--transition-speed) ease;
+  transform-origin: center top;
+}
+
+.pandy-body {
+  width: 100px;
+  height: 120px;
+  background: var(--pandy-white);
+  border-radius: 50% 50% 20% 20%;
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all var(--transition-speed) ease;
+}
+
+.pandy-arm-left,
+.pandy-arm-right {
+  width: 20px;
+  height: 60px;
+  background: var(--pandy-white);
+  position: absolute;
+  top: 90px;
+  border-radius: 20px;
+  transition: all var(--transition-speed) ease;
+}
+
+.pandy-arm-left {
+  left: calc(50% - 60px);
+}
+
+.pandy-arm-right {
+  left: calc(50% + 40px);
+}
+
+.pandy-leg-left,
+.pandy-leg-right {
+  width: 25px;
+  height: 50px;
+  background: var(--pandy-white);
+  position: absolute;
+  top: 180px;
+  border-radius: 20px;
+  transition: all var(--transition-speed) ease;
+}
+
+.pandy-leg-left {
+  left: calc(50% - 35px);
+}
+
+.pandy-leg-right {
+  left: calc(50% + 10px);
+}
+
+/* Responsividade simples */
+@media (max-width: 480px) {
+  .pandy-body-container {
+    max-width: 150px;
+    height: 200px;
+  }
+
+  .pandy-head {
+    width: 60px;
+    height: 60px;
+  }
+
+  .pandy-body {
+    width: 80px;
+    height: 100px;
+    top: 50px;
+  }
+
+  .pandy-arm-left {
+    left: calc(50% - 45px);
+    height: 50px;
+  }
+
+  .pandy-arm-right {
+    left: calc(50% + 30px);
+    height: 50px;
+  }
+
+  .pandy-leg-left {
+    left: calc(50% - 25px);
+    height: 40px;
+  }
+
+  .pandy-leg-right {
+    left: calc(50% + 5px);
+    height: 40px;
+  }
+}
